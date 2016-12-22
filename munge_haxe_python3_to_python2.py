@@ -44,7 +44,10 @@ def fixline(aInLine):
         else:
             retval = retval.replace("_g_head", "_g_head[0]")
     
-    retval = retval.replace("print", "xprint")
+    #retval = retval.replace("print", "xprint")
+    retval = retval.replace(".print(", ".xprint(")
+    retval = retval.replace("def print(", "def xprint(")
+    
     retval = retval.replace("super().__init__()", "%s.__init__(self)" % g_classname)
     retval = retval.replace("super().__init__(message)", "%s.__init__(self, message)" % g_classname)
         
