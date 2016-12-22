@@ -320,9 +320,11 @@ def main():
           "requires": ["map_core", "removedupstrarr_core", "quicksort_core"]
         }
 
-        llib = s.compilelib([decl], [lcoredist])
+        llib = s.compilelib([ldecl], [lcoredist])
         
-        result = s.evaluate(source, decl["transform-t"], llib["lib"], 0)
+        print(llib["lib"])
+        
+        result = s.evaluate(lsource, ldecl["transform-t"], llib["lib"], 0)
         
         print result
 
