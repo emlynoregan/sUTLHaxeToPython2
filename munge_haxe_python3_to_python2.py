@@ -31,6 +31,7 @@ def fixline(aInLine):
         m = re.search("\(([^\)]+)\)", retval)
         if m:
             g_classname = m.group(1)
+            
 
     if retval[:3] == "\t\t\t": # at least three
         if "nonlocal" in retval:
@@ -60,6 +61,9 @@ def fixline(aInLine):
     if "def unhandleKeywords" in retval:
 #         retval = "%s\t\treturn unicode(name)\n" % retval
         retval = "%s\t\tname = unicode(name)\n" % retval
+
+    if "def field(o,field):" and g_classname == "python_Boot":
+        retval = "%s\t\t#hello\n" % retval
 
     return retval
     
