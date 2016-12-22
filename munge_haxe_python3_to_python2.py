@@ -58,8 +58,8 @@ def fixline(aInLine):
     retval = retval.replace("haxe_Log.trace = old", "#haxe_Log.trace = old")
     retval = retval.replace("o.__delattr__(field)", "del o.__dict__[field]")
     if "def unhandleKeywords" in retval:
-        retval = "%s\t\treturn unicode(name)\n" % retval
-#        retval = "%s\t\tname = unicode(name)\n" % retval
+#         retval = "%s\t\treturn unicode(name)\n" % retval
+        retval = "%s\t\tname = unicode(name)\n" % retval
 
     return retval
     
