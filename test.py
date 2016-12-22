@@ -33,23 +33,293 @@ def main():
         with open("sUTL_core.dist.json") as f:
             lcoredist = json.load(f)
 
-        source = {
-          "x": 1,
-          "y": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,1, 2, 3, 4, 5, 6, 7, 8, 9, 10,1, 2, 3, 4, 5, 6, 7, 8, 9, 10,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        }
-       
-        decl = {
-          "transform-t": {
-            "&": "addmaps",
-            "map1": "^@",
-            "map2": {
-                "x": 3,
-                "z": 4
+        lsource = {
+          "roleinfos": [
+            {
+                "admin": {
+                    "modules": [
+                        "Client", 
+                        "People", 
+                        "Timeline", 
+                        "Video", 
+                        "Schedule", 
+                        "Inbox", 
+                        "Outbox", 
+                        "Config", 
+                        "Metrics", 
+                        "ViewSkills", 
+                        "PathAuthor", 
+                        "PathPerform", 
+                        "PathResults", 
+                        "ViewTasks", 
+                        "Groups"
+                    ], 
+                    "capabilities": [
+                        "Config;r", 
+                        "Device2;r", 
+                        "Device2;w", 
+                        "Event;r", 
+                        "Group2;r", 
+                        "Group2;w", 
+                        "Person2;r", 
+                        "Person2;w", 
+                        "VideoInfo2;r", 
+                        "VideoInfo2;w", 
+                        "NotificationTemplate;r", 
+                        "NotificationTemplate;w", 
+                        "Notification;w", 
+                        "ReceivedNotification;w", 
+                        "Config;w", 
+                        "Metric;r", 
+                        "Path;r", 
+                        "Path;w", 
+                        "PathDef;r", 
+                        "PathDef;w", 
+                        "Task;r", 
+                        "Metric;w", 
+                        "Action;w", 
+                        "Action;r", 
+                        "App;r", 
+                        "App;w"
+                    ]
+                }, 
+                "client": {
+                    "modules": [
+                        "unmanaged"
+                    ], 
+                    "capabilities": [], 
+                    "roles": [
+                        "admin", 
+                        "adminviewer", 
+                        "trainee"
+                    ]
+                }, 
+                "adminviewer": {
+                    "modules": [
+                        "Client", 
+                        "People", 
+                        "Timeline", 
+                        "Video", 
+                        "Schedule", 
+                        "Inbox", 
+                        "Outbox", 
+                        "Config", 
+                        "Metrics", 
+                        "ViewSkills", 
+                        "PathAuthor", 
+                        "PathPerform", 
+                        "PathResults", 
+                        "ViewTasks", 
+                        "Groups"
+                    ], 
+                    "capabilities": [
+                        "Config;r", 
+                        "Device2;r", 
+                        "Event;r", 
+                        "Group2;r", 
+                        "Person2;r", 
+                        "VideoInfo2;r", 
+                        "NotificationTemplate;r", 
+                        "Config;w", 
+                        "Metric;r", 
+                        "Path;r", 
+                        "PathDef;r", 
+                        "Task;r", 
+                        "Action;r", 
+                        "App;r"
+                    ]
+                }, 
+                "trainee": {
+                    "modules": [
+                        "Video", 
+                        "Inbox", 
+                        "HasSkills", 
+                        "HasTasks", 
+                        "studentview"
+                    ], 
+                    "capabilities": [
+                        "Config;r", 
+                        "VideoInfo2;r"
+                    ]
+                }
+            },
+            {
+                "admin": {
+                    "modules": [
+                        "Client", 
+                        "People", 
+                        "Timeline", 
+                        "Video", 
+                        "Schedule", 
+                        "Inbox", 
+                        "Outbox", 
+                        "Config", 
+                        "Metrics", 
+                        "ViewSkills", 
+                        "PathAuthor", 
+                        "PathPerform", 
+                        "PathResults", 
+                        "ViewTasks", 
+                        "Groups"
+                    ], 
+                    "capabilities": [
+                        "Config;r", 
+                        "Device2;r", 
+                        "Device2;w", 
+                        "Event;r", 
+                        "Group2;r", 
+                        "Group2;w", 
+                        "Person2;r", 
+                        "Person2;w", 
+                        "VideoInfo2;r", 
+                        "VideoInfo2;w", 
+                        "NotificationTemplate;r", 
+                        "NotificationTemplate;w", 
+                        "Notification;w", 
+                        "ReceivedNotification;w", 
+                        "Config;w", 
+                        "Metric;r", 
+                        "Path;r", 
+                        "Path;w", 
+                        "PathDef;r", 
+                        "PathDef;w", 
+                        "Task;r", 
+                        "Metric;w", 
+                        "Action;w", 
+                        "Action;r", 
+                        "App;r", 
+                        "App;w"
+                    ]
+                }, 
+                "client": {
+                    "modules": [
+                        "unmanaged"
+                    ], 
+                    "capabilities": [], 
+                    "roles": [
+                        "admin", 
+                        "adminviewer", 
+                        "trainee"
+                    ]
+                }, 
+                "adminviewer": {
+                    "modules": [
+                        "Client", 
+                        "People", 
+                        "Timeline", 
+                        "Video", 
+                        "Schedule", 
+                        "Inbox", 
+                        "Outbox", 
+                        "Config", 
+                        "Metrics", 
+                        "ViewSkills", 
+                        "PathAuthor", 
+                        "PathPerform", 
+                        "PathResults", 
+                        "ViewTasks", 
+                        "Groups"
+                    ], 
+                    "capabilities": [
+                        "Config;r", 
+                        "Device2;r", 
+                        "Event;r", 
+                        "Group2;r", 
+                        "Person2;r", 
+                        "VideoInfo2;r", 
+                        "NotificationTemplate;r", 
+                        "Config;w", 
+                        "Metric;r", 
+                        "Path;r", 
+                        "PathDef;r", 
+                        "Task;r", 
+                        "Action;r", 
+                        "App;r"
+                    ]
+                }, 
+                "trainee": {
+                    "modules": [
+                        "Video", 
+                        "Inbox", 
+                        "HasSkills", 
+                        "HasTasks", 
+                        "studentview"
+                    ], 
+                    "capabilities": [
+                        "Config;r", 
+                        "VideoInfo2;r"
+                    ]
+                }
             }
-          },
-          "requires": ["addmaps"]
+          ]
         }
-        
+
+        ldecl = {
+          "transform-t": 
+          {
+            "!": {":": {
+              "&": "makemap",
+              "value": {
+                "&": "map_core",
+                "list": "^@.combinedroles",
+                "t": {":": [
+                  "^@.item",
+                  {
+                    "&": "reduce",
+                    "list": "^@.roleinfos",
+                    "accum": {},
+                    "rolename": "^@.item",
+                    "t": {":": {
+                      "roles":  {         
+                        "!": "^@.mergearrs-t",
+                        "attribname": "roles"
+                      },
+                      "modules":  {         
+                        "!": "^@.mergearrs-t",
+                        "attribname": "modules"
+                      },
+                      "capabilities":  {         
+                        "!": "^@.mergearrs-t",
+                        "attribname": "capabilities"
+                      }
+                    }}
+                  }
+                ]}
+              }
+            }},
+            "combinedroles": {
+              "&": "removedupstrarr_core",
+              "list": {
+                "&": "reduce",
+                "list": "^@.roleinfos",
+                "accum": [],
+                "t": {":": 
+                  [
+                    "&&",
+                    "^@.accum",
+                    {
+                      "&": "keys",
+                      "map": "^@.item"
+                    }
+                  ]
+                }
+              }
+            },
+            "mergearrs-t": {":": {
+              "&": "quicksort_core",
+              "list": {
+                "&": "removedupstrarr_core",
+                "list": [
+                  "&&",
+                  ["^@", "accum", "^@.attribname"],
+                  ["^@", "item", "^@.rolename", "^@.attribname"]
+                ]
+              }
+            }}
+          },
+          "requires": ["map_core", "removedupstrarr_core", "quicksort_core"]
+        }
+
         llib = s.compilelib([decl], [lcoredist])
         
         result = s.evaluate(source, decl["transform-t"], llib["lib"], 0)
