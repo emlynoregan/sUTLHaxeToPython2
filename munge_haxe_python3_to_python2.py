@@ -62,6 +62,8 @@ def fixline(aInLine):
 #         retval = "%s\t\treturn unicode(name)\n" % retval
         retval = "%s\t\tname = unicode(name)\n" % retval
 
+    if "_hx_local_0 = len(field)" in retval:
+        retval = "%s\t\tif hasattr(o,field):\n\t\t\treturn getattr(o,field)\n" % retval
 #     if "def field(o,field):" in retval:
 #         if g_classname == "python_Boot":
 #             retval = "%s\t\tXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" % retval
