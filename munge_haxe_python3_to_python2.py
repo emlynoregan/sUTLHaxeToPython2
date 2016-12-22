@@ -16,6 +16,7 @@ def main():
     sys.stdout.writelines(["from __future__ import unicode_literals\n"])
     sys.stdout.writelines(["from __future__ import division\n"])
     sys.stdout.writelines(["from util2 import Util2\n"])
+    sys.stdout.writelines(["from util3 import Util3\n"])
     sys.stdout.writelines(["str = unicode\n"])
     
     for line in fileinput.input():
@@ -61,6 +62,8 @@ def fixline(aInLine):
     retval = retval.replace("o.__delattr__(field)", "del o.__dict__[field]")
     retval = retval.replace("class Util2", "class SlowUtil2")
     retval = retval.replace("Util2._hx_class = Util2", "")
+    retval = retval.replace("class Util3", "class SlowUtil3")
+    retval = retval.replace("Util3._hx_class = Util3", "")
 
 
     if "def unhandleKeywords" in retval:
