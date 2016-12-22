@@ -322,8 +322,6 @@ def main():
 
         llib = s.compilelib([ldecl], [lcoredist])
         
-        print(llib["lib"])
-        
         result = s.evaluate(lsource, ldecl["transform-t"], llib["lib"], 0)
         
         print result
