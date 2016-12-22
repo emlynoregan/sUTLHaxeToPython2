@@ -1,4 +1,5 @@
 from sUTLHaxePython2.sUTL import sUTL
+import json
 
 def main():
     s = sUTL()
@@ -6,7 +7,9 @@ def main():
     libs = [[
       {
           "name": "six",
-          "transform-t": 6
+          "transform-t": {
+              "x": 6
+          }
       }
     ]]
  
@@ -25,6 +28,42 @@ def main():
     lib = libr["lib"]
  
     result = s.evaluate(source, decl["transform-t"], lib, 0)
+
+    def slow():
+        with open("sUTL_core.dist.json") as f:
+            lcoredist = json.load(f)
+
+        source = {
+          "x": 1,
+          "y": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,1, 2, 3, 4, 5, 6, 7, 8, 9, 10,1, 2, 3, 4, 5, 6, 7, 8, 9, 10,1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+       
+        decl = {
+          "transform-t": {
+            "&": "addmaps",
+            "map1": "^@",
+            "map2": {
+                "x": 3,
+                "z": 4
+            }
+          },
+          "requires": ["addmaps"]
+        }
+        
+        llib = s.compilelib([decl], [lcoredist])
+        
+        result = s.evaluate(source, decl["transform-t"], llib["lib"], 0)
+        
+        print result
+
+    import cProfile
+
+    p = cProfile.Profile()
+    
+    p.enable()
+    p.runcall(slow)
+    p.disable()
+    p.print_stats()
  
     print result
 
