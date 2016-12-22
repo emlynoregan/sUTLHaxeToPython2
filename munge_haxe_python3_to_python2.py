@@ -62,7 +62,7 @@ def fixline(aInLine):
 #         retval = "%s\t\treturn unicode(name)\n" % retval
         retval = "%s\t\tname = unicode(name)\n" % retval
 
-    if "def field(o,field):" and g_classname == "python_Boot":
+    if "def field(o,field):" in retval and g_classname == "python_Boot":
         retval = "%s\t\t#hello\n" % retval
 
     return retval
