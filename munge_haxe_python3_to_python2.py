@@ -11,7 +11,12 @@ This code is stupidly brittle, but at least there's a decent test suite which wi
 this (eg: if a new version of Haxe's python generator generates slightly different code).
 '''
 
+g_foundmain = False
+
 def main():
+    
+    global g_foundmain
+    
     sys.stdout.writelines(["from __future__ import unicode_literals\n"])
     sys.stdout.writelines(["from __future__ import division\n"])
     sys.stdout.writelines(["from util2 import Util2\n"])
@@ -26,13 +31,14 @@ def main():
     for line in open("./sUTLHaxePython2/utilreflect.py"):
         sys.stdout.writelines([line])
 
-    sys.stdout.writelines(["", "Main.main()", ""])
+    if g_foundmain:
+        sys.stdout.writelines(["", "Main.main()", ""])
 
 
 g_classname = None
 def fixline(aInLine):
     global g_classname
-    
+    global g_foundmain
     retval = aInLine
     
     if retval[:6] == "class ":
@@ -76,7 +82,9 @@ def fixline(aInLine):
     retval = retval.replace("class UtilReflect", "class SlowUtilReflect")
     retval = retval.replace("UtilReflect._hx_class = UtilReflect", "")
 
-    retval = retval.replace("Main.main()", "")
+    if "Main.main()" in retval:
+        retval = ""
+        g_foundmain = True
 
     if "def unhandleKeywords" in retval:
 #         retval = "%s\t\treturn unicode(name)\n" % retval
