@@ -1,6 +1,5 @@
 import fileinput
 import sys
-from pkg_resources import replace
 import re
 
 '''
@@ -17,11 +16,15 @@ def main():
     sys.stdout.writelines(["from __future__ import division\n"])
     sys.stdout.writelines(["from util2 import Util2\n"])
     sys.stdout.writelines(["from util3 import Util3\n"])
+#     sys.stdout.writelines(["from utilreflect import UtilReflect\n"])
     sys.stdout.writelines(["str = unicode\n"])
     
     for line in fileinput.input():
         outline = fixline(line)
         sys.stdout.writelines([outline])
+
+    for line in open("./sUTLHaxePython2/utilreflect.py"):
+        sys.stdout.writelines([line])
 
 g_classname = None
 def fixline(aInLine):
@@ -60,11 +63,15 @@ def fixline(aInLine):
     retval = retval.replace("haxe_Log.trace = haxe_unit_TestRunner.customTrace", "#haxe_Log.trace = haxe_unit_TestRunner.customTrace")
     retval = retval.replace("haxe_Log.trace = old", "#haxe_Log.trace = old")
     retval = retval.replace("o.__delattr__(field)", "del o.__dict__[field]")
+
     retval = retval.replace("class Util2", "class SlowUtil2")
     retval = retval.replace("Util2._hx_class = Util2", "")
+    
     retval = retval.replace("class Util3", "class SlowUtil3")
     retval = retval.replace("Util3._hx_class = Util3", "")
 
+#     retval = retval.replace("class UtilReflect", "class SlowUtilReflect")
+#     retval = retval.replace("UtilReflect._hx_class = UtilReflect", "")
 
     if "def unhandleKeywords" in retval:
 #         retval = "%s\t\treturn unicode(name)\n" % retval
