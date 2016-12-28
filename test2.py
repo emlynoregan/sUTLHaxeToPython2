@@ -39,9 +39,10 @@ def main():
     thx = s._toHx(decl["transform-t"])
     lhx = s._toHx(lib)
     hhx = s._toHx(0)
+    bhx = s.builtinshx()
     
     p.enable()
-    rhx = p.runcall(run, shx, thx, lhx, hhx)
+    rhx = p.runcall(run, shx, thx, lhx, bhx, hhx)
     p.disable()
 
     r = s._fromHx(rhx)
