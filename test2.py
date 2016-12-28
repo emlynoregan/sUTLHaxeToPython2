@@ -35,8 +35,13 @@ def main():
 
     p = cProfile.Profile()
     
+    shx = s._toHx(source)
+    thx = s._toHx(decl["transform-t"])
+    lhx = s._toHx(lib)
+    hhx = s._toHx(0)
+    
     p.enable()
-    rhx = p.runcall(run, s._toHx(source), s._toHx(decl["transform-t"]), s._toHx(lib), s._toHx(0))
+    rhx = p.runcall(run, shx, thx, lhx, hhx)
     p.disable()
 
     r = s._fromHx(rhx)
