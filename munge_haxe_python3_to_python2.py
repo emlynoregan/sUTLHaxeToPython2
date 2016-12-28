@@ -26,6 +26,9 @@ def main():
     for line in open("./sUTLHaxePython2/utilreflect.py"):
         sys.stdout.writelines([line])
 
+    sys.stdout.writelines(["", "Main.main()", ""])
+
+
 g_classname = None
 def fixline(aInLine):
     global g_classname
@@ -70,8 +73,10 @@ def fixline(aInLine):
     retval = retval.replace("class Util3", "class SlowUtil3")
     retval = retval.replace("Util3._hx_class = Util3", "")
 
-#     retval = retval.replace("class UtilReflect", "class SlowUtilReflect")
-#     retval = retval.replace("UtilReflect._hx_class = UtilReflect", "")
+    retval = retval.replace("class UtilReflect", "class SlowUtilReflect")
+    retval = retval.replace("UtilReflect._hx_class = UtilReflect", "")
+
+    retval = retval.replace("Main.main()", "")
 
     if "def unhandleKeywords" in retval:
 #         retval = "%s\t\treturn unicode(name)\n" % retval
