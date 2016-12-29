@@ -1,8 +1,9 @@
 from sUTLHaxePython2.sUTL import sUTL
 
 def main():
-    decl = {
-      "transform-t": 1
+    decl = {"transform-t": {"&": "@", "head": True}}
+    z = {
+        "transform-t": {"x": {"x": {"x": {"s": "^@"}}}, "y": {"x": {"x": {"s": "^@"}}}}
     }
      
     source = {
@@ -26,8 +27,8 @@ def main():
         
         return lib
 
-    def run(shx, thx, lhx, hhx):
-        return s.evaluatehx(shx, thx, lhx, hhx)
+    def run(shx, thx, lhx, bhx, hhx):
+        return s.evaluatehx(shx, thx, lhx, bhx, hhx)
 
     lib = compilelib()
     
