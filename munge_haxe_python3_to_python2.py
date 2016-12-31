@@ -87,8 +87,8 @@ def fixline(aInLine):
 #         g_foundmain = True
 
     if "def unhandleKeywords" in retval:
-#         retval = "%s\t\treturn unicode(name)\n" % retval
-        retval = "%s\t\tname = unicode(name)\n" % retval
+        retval = "%s        name = unicode(name)\n" % retval
+        #retval = "%s\t\tname = unicode(name)\n" % retval
 
 #     if "_hx_local_0 = len(field)" in retval:
 #         retval = "%s\t\tif hasattr(o,field):\n\t\t\treturn getattr(o,field)\n" % retval
